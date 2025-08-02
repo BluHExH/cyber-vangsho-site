@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Vangsho Recruitment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+    }
+
+    :root {
+      --neon-green: #00ffcc;
+      --neon-pink: #ff0066;
+      --neon-yellow: #ffcc00;
+      --dark-blue: #0a0a16;
+      --medium-blue: #121230;
+      --terminal-bg: rgba(10, 20, 30, 0.95);
+    }
+
+    body {
+      background: radial-gradient(circle at center, #000428, #004e92, #000);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      min-height: 100vh;
+      color: #f0f0f0;
+      overflow-x: hidden;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .cyber-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(rgba(0, 255, 204, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 204, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    header {
+      text-align: center;
+      margin: 30px 0 40px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      background: var(--terminal-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--neon-green);
+      box-shadow: 0 0 25px var(--neon-green);
+      animation: pulse 3s infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px var(--neon-pink);
+      border-color: var(--neon-pink);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 15px var(--neon-green); }
+      50% { box-shadow: 0 0 35px var(--neon-pink); }
+      100% { box-shadow: 0 0 15px var(--neon-green); }
+    }
+
+    .logo i {
+      font-size: 45px;
+      color: var(--neon-green);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--neon-pink), var(--neon-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
+      animation: titleGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      from { text-shadow: 0 0 10px var(--neon-pink); }
+      to { text-shadow: 0 0 25px var(--neon-pink), 0 0 15px var(--neon-yellow); }
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      color: var(--neon-green);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+      text-shadow: 0 0 8px var(--neon-green);
+    }
+
+    .recruitment-card {
+      background: var(--terminal-bg);
+      border: 2px solid var(--neon-green);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .recruitment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(255, 0, 102, 0.4);
+    }
+
+    .recruitment-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+        var(--neon-green), 
+        var(--neon-pink), 
+        var(--neon-yellow), 
+        var(--neon-green));
+      z-index: -1;
+      animation: borderAnimation 4s linear infinite;
+      background-size: 300% 300%;
+    }
+
+    @keyframes borderAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .section {
+      margin-bottom: 30px;
+      line-height: 1.8;
+      font-size: 1.2rem;
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .section::before {
+      content: '➤';
+      color: var(--neon-green);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.3rem;
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .highlight {
+      color: var(--neon-yellow);
+      font-weight: 600;
+      text-shadow: 0 0 8px var(--neon-yellow);
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+
+    .highlight:hover {
+      transform: scale(1.05);
+      text-shadow: 0 0 15px var(--neon-yellow);
+    }
+
+    .requirements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .requirement-card {
+      background: rgba(0, 20, 30, 0.7);
+      border: 1px solid var(--neon-green);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .requirement-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 255, 204, 0.5);
+      background: rgba(0, 30, 40, 0.8);
+    }
+
+    .requirement-card i {
+      font-size: 3rem;
+      color: var(--neon-green);
+      margin-bottom: 20px;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .requirement-card:hover i {
+      transform: scale(1.2);
+      color: var(--neon-yellow);
+      text-shadow: 0 0 15px var(--neon-yellow);
+    }
+
+    .requirement-card h3 {
+      color: var(--neon-yellow);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      text-shadow: 0 0 8px rgba(255, 204, 0, 0.3);
+    }
+
+    .requirement-card p {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+    }
+
+    .mission-badge {
+      background: var(--neon-pink);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: bold;
+      margin: 15px 0;
+      box-shadow: 0 0 15px var(--neon-pink);
+      animation: badgePulse 2s infinite;
+      font-size: 1.2rem;
+    }
+
+    @keyframes badgePulse {
+      0% { box-shadow: 0 0 10px var(--neon-pink); }
+      50% { box-shadow: 0 0 25px var(--neon-pink); }
+      100% { box-shadow: 0 0 10px var(--neon-pink); }
+    }
+
+    .cyber-terminal {
+      background: rgba(0, 10, 20, 0.9);
+      border: 1px solid var(--neon-green);
+      border-radius: 10px;
+      padding: 25px;
+      margin: 30px 0;
+      font-family: 'Courier New', monospace;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 20px rgba(0, 255, 204, 0.2);
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 10px;
+      margin-right: 15px;
+    }
+
+    .terminal-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .terminal-title {
+      color: var(--neon-green);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .terminal-content {
+      color: var(--neon-green);
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .terminal-content div {
+      margin-bottom: 10px;
+    }
+
+    .terminal-content .blink {
+      animation: blink 1s infinite;
+      display: inline-block;
+      width: 8px;
+      background: var(--neon-green);
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .cyber-scan {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      animation: scan 3s linear infinite;
+    }
+
+    @keyframes scan {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .cta-section {
+      text-align: center;
+      margin: 40px 0;
+      padding: 40px;
+      background: rgba(255, 0, 102, 0.1);
+      border-radius: 15px;
+      border: 1px solid var(--neon-pink);
+      box-shadow: 0 0 25px rgba(255, 0, 102, 0.3);
+    }
+
+    .cta-title {
+      font-size: 2.2rem;
+      color: var(--neon-yellow);
+      margin-bottom: 25px;
+      text-shadow: 0 0 15px var(--neon-yellow);
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .cta-button {
+      padding: 18px 45px;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      background: linear-gradient(45deg, var(--neon-green), var(--neon-pink));
+      color: white;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 255, 204, 0.7);
+    }
+
+    .cta-button:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .cta-button:hover:after {
+      left: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      margin-top: 20px;
+      border: 1px solid var(--neon-green);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+    }
+
+    .footer-highlight {
+      color: var(--neon-yellow);
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-shadow: 0 0 8px var(--neon-yellow);
+    }
+
+    .command-unit {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: var(--neon-green);
+      text-shadow: 0 0 8px var(--neon-green);
+    }
+
+    .redirect-message {
+      font-size: 1.4rem;
+      color: var(--neon-green);
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 20, 30, 0.8);
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 1px solid var(--neon-green);
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .recruitment-card {
+        padding: 25px;
+      }
+      
+      h1 {
+        font-size: 2.3rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section {
+        padding-left: 30px;
+        font-size: 1.1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .cta-button {
+        width: 100%;
+        max-width: 350px;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        width: 70px;
+        height: 70px;
+      }
+      
+      .logo i {
+        font-size: 35px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .cta-button {
+        padding: 15px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cyber-grid"></div>
+  
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <div class="logo">
+          <i class="fas fa-user-secret"></i>
+        </div>
+        <div class="logo">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="logo">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h1>CYBER VANGSHO – নিয়োগ বিজ্ঞপ্তি</h1>
+      <p class="subtitle">সাইবার নিরাপত্তার নতুন যুগে যোগ দিন, হয়ে উঠুন ডিজিটাল শ্যাডো অপারেটিভ</p>
+    </header>
+    
+    <main>
+      <div class="recruitment-card">
+        <div class="section">
+          <strong>CYBER VANGSHO</strong> খুঁজছে <span class="highlight">২০ জন দক্ষ, নিষ্ঠাবান ও অ্যাক্টিভ সদস্য</span> — যারা <strong>রাত ৯টা</strong> থেকে আমাদের গোপন রিপোর্ট অপারেশনে অংশ নিতে পারবে এবং টার্গেট ধ্বংসে সহযোগিতা করবে।
+        </div>
+        
+        <div class="cyber-terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <div class="terminal-dot dot-red"></div>
+              <div class="terminal-dot dot-yellow"></div>
+              <div class="terminal-dot dot-green"></div>
+            </div>
+            <div class="terminal-title">root@cybervangsho:~# mission_details</div>
+          </div>
+          <div class="terminal-content">
+            <div>> পদবী: <span class="highlight">রিপোর্ট অপারেটিভ (Level-1)</span></div>
+            <div>> অপারেশন টাইম: <span class="highlight">প্রতিদিন রাত ৯টা</span></div>
+            <div>> মিশন টার্গেট: <span class="highlight">Spam / Fake ID / Illegal Post</span></div>
+            <div>> প্রমাণ: <span class="highlight">রিপোর্টের পর Screenshot জমা দিতে হবে</span></div>
+            <div>> মিশন স্ট্যাটাস: <span class="highlight">ACTIVE</span><span class="blink"></span></div>
+          </div>
+          <div class="cyber-scan"></div>
+        </div>
+        
+        <div class="requirements-grid">
+          <div class="requirement-card">
+            <i class="fas fa-tasks"></i>
+            <h3>টাস্ক দক্ষতা</h3>
+            <p>টাস্ক অনুযায়ী রিপোর্ট করতে পারা</p>
+          </div>
+          
+          <div class="requirement-card">
+            <i class="fas fa-clock"></i>
+            <h3>নিয়মিততা</h3>
+            <p>নিয়মিত অনলাইন থাকা</p>
+          </div>
+          
+          <div class="requirement-card">
+            <i class="fas fa-user-secret"></i>
+            <h3>গোপনীয়তা</h3>
+            <p>গোপনীয়তা বজায় রাখা</p>
+          </div>
+          
+          <div class="requirement-card">
+            <i class="fas fa-ban"></i>
+            <h3>নিষিদ্ধ কাজ</h3>
+            <p>কোনো রকম Random রিপোর্ট না করা</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <span class="mission-badge">সতর্কতা</span><br>
+          যারা মিশনে থাকবে না, তাদের Remove করা হবে।
+        </div>
+      </div>
+      
+      <div class="cta-section">
+        <h2 class="cta-title">অংশগ্রহণ করুন অপারেশনে!</h2>
+        <p>মিশনে যোগ দিতে এখনই কমেন্ট করুন নিচের যেকোনো একটি অপশন দিয়ে</p>
+        
+        <div class="cta-buttons">
+          <button id="missionButton" class="cta-button">
+            <i class="fas fa-check-circle"></i> 
+            ✅ Ready for Mission
+          </button>
+          <button id="joinButton" class="cta-button">
+            <i class="fas fa-bolt"></i> 
+            ⚡ Join Cyber Vangsho
+          </button>
+        </div>
+      </div>
+      
+      <div id="redirectMessage" class="redirect-message">
+        <i class="fas fa-spinner fa-spin"></i> রিডাইরেক্ট হচ্ছে, অনুগ্রহ করে অপেক্ষা করুন...
+      </div>
+    </main>
+    
+    <footer>
+      <p><strong>🔥 আমরা শুধু রিপোর্ট করি না — টার্গেটকে Digital Shadow-এ পাঠিয়ে দিই।</strong></p>
+      <p class="command-unit">— নিয়োগকারী: <span class="footer-highlight">Command Unit, Cyber Vangsho</span></p>
+    </footer>
+  </div>
+
+  <script>
+    const missionButton = document.getElementById('missionButton');
+    const joinButton = document.getElementById('joinButton');
+    const redirectMessage = document.getElementById('redirectMessage');
+    
+    // Handle mission button click
+    missionButton.addEventListener('click', function() {
+      // Add animation effect
+      this.style.background = 'linear-gradient(45deg, var(--neon-pink), var(--neon-yellow))';
+      this.style.boxShadow = '0 0 30px var(--neon-pink)';
+      
+      setTimeout(() => {
+        this.style.background = 'linear-gradient(45deg, var(--neon-green), var(--neon-pink))';
+        this.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.5)';
+      }, 500);
+      
+      // Show redirect message
+      redirectMessage.style.display = 'block';
+      
+      // Redirect after delay
+      setTimeout(() => {
+        window.location.href = 'https://www.facebook.com/elite.shadow.hex';
+      }, 3000);
+    });
+    
+    // Handle join button click
+    joinButton.addEventListener('click', function() {
+      // Add animation effect
+      this.style.background = 'linear-gradient(45deg, var(--neon-green), var(--neon-yellow))';
+      this.style.boxShadow = '0 0 30px var(--neon-yellow)';
+      
+      setTimeout(() => {
+        this.style.background = 'linear-gradient(45deg, var(--neon-green), var(--neon-pink))';
+        this.style.boxShadow = '0 0 20px rgba(0, 255, 204, 0.5)';
+      }, 500);
+      
+      // Show redirect message
+      redirectMessage.style.display = 'block';
+      
+      // Redirect after delay
+      setTimeout(() => {
+        window.location.href = 'https://m.me/j/AbZDpBVPN135LkVX/';
+      }, 3000);
+    });
+    
+    // Terminal typing effect
+    document.addEventListener('DOMContentLoaded', function() {
+      const terminal = document.querySelector('.terminal-content');
+      const lines = terminal.querySelectorAll('div');
+      
+      // Clear terminal content
+      terminal.innerHTML = '';
+      
+      let currentLine = 0;
+      let currentChar = 0;
+      const typingSpeed = 40;
+      const lineDelay = 500;
+      
+      function typeWriter() {
+        if (currentLine < lines.length) {
+          const line = lines[currentLine];
+          const text = line.innerHTML;
+          
+          if (!line.parentNode) {
+            terminal.appendChild(line);
+          }
+          
+          if (currentChar <= text.length) {
+            line.innerHTML = text.substring(0, currentChar);
+            currentChar++;
+            setTimeout(typeWriter, typingSpeed);
+          } else {
+            currentLine++;
+            currentChar = 0;
+            setTimeout(typeWriter, lineDelay);
+          }
+          
+          // Scroll to bottom of terminal
+          terminal.scrollTop = terminal.scrollHeight;
+        }
+      }
+      
+      // Start typing after 1 second
+      setTimeout(typeWriter, 1000);
+    });
+  </script>
+</body>
+</html>
